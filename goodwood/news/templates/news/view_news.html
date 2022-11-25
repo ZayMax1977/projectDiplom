@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{%  block title %}
+{{news_item.title}}
+{% endblock %}
+
+{% block nav_category %}
+{% include 'inc/_news_nav_category.html' %}
+{% endblock%}
+
+{% block partners %}
+{% include 'inc/_partners.html' %}
+{% endblock%}
+
+{% block slyle-nav %}
+   <style>
+        #news{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+ #main {
+    background-color: #651702;
+    padding:7px;
+    border: 1px solid white ;
+    text-align:center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-left: none;
+    border-right:none;
+    opacity: 0.7;
+}
+#main:hover{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+
+
+}
+    </style>
+    {% endblock %}
+
+
+
+
+
+{%  block content %}
+<div class="card mb-3">
+    <div class="card-header" style="background-color: #FF8E29;">
+        Категория: {{ news_item.category }}
+    </div>
+    <div class="card-body">
+        <div class="media">
+            {% if news_item.photo %}
+            <img src="{{news_item.photo.url }}" alt="" width="350" class="mr-3">
+            {% else %}
+            <img src="/static/media/zaglooshka.jpg" alt="" class="mr-3">
+            {% endif %}
+            <div class="media-body">
+                <h5 class="card-title">{{ news_item.title }}</h5>
+                <p class="card-text">{{ news_item.content|linebreaks }}</p>
+<!--                <a href="{{ i.source }}" class="btn btn-primary">Источник</a>-->
+<!--                <a href="#" class="btn btn-primary">Читать далее...</a>-->
+            </div>
+        </div>
+
+    </div>
+    <div class="card-footer text-muted" style="background-color: #FF8E29;">
+        {{ news_item.created_at|date:"Y-m-d H:i:s"}}&emsp;
+        <a href="{{news_item.source }}" ><b><i>{{news_item.source }}</i> </b></a>&emsp;
+    </div>
+</div>
+{% endblock%}

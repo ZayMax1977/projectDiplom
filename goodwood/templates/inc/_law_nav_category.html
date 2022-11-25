@@ -1,0 +1,23 @@
+{% if perms.law or perms.news or perms.tourism %}
+<div class="list-group" >
+    <a href="{% url 'add_law' %}" class="list-group-item list-group-item-action"
+       style="background-color: #FF8E29; border-bottom-color:white"
+    >Добавить статью</a>
+</div>
+{% endif %}
+
+
+<div class="list-group">
+    <a href="{% url 'law' %}" class="list-group-item list-group-item-action "
+       style="background-color: #FF8E29;">Все
+        статьи</a>
+
+</div>
+
+
+<div class="list-group">
+    {% for i in categories %}
+    <a href="/law/category/{{ i.id}}" class="list-group-item list-group-item-action " >{{ i.title }} </a>
+    {% endfor %}
+</div>
+<br>

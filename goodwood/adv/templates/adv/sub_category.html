@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{%  block title %}
+Подкатегория: {{ title }}
+{% endblock %}
+
+{% block slyle-nav %}
+
+    <style>
+
+     .pag{
+    background-color:#651702;
+    border-color:#651702;
+    color: white;
+    opacity: 0.7;
+ }
+ .pag:hover{
+     background-color: #E35C14;
+ }
+        #submit-an-ad{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+ #main {
+    background-color: #651702;
+    padding:7px;
+    border: 1px solid white ;
+    text-align:center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-left: none;
+    border-right:none;
+    opacity: 0.7;
+}
+#main:hover{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+
+
+}
+    </style>
+    {% endblock %}
+
+
+{% block nav_category %}
+{% include 'inc/_adv_nav_category.html' %}
+<!-- <form action='{% url "subcategory" %}' method="get">-->
+<!--        <div class="cls-hover">-->
+<!--                <button  name = "flat" id="nav_sub_cat_adv1" class="form-control dec-none" >Квартира</button>-->
+<!--        </div>-->
+<!--        <div class="cls-hover">-->
+<!--                <button  name = "house" id="nav_sub_cat_adv2" class="form-control dec-none" >Дом</button>-->
+<!--        </div>-->
+<!--        <div class="cls-hover">-->
+<!--            <button  name = "room" id="nav_sub_cat_adv3" class="form-control dec-none" >Комната</button>-->
+<!--        </div>-->
+<!--        <div class="cls-hover">-->
+<!--           <button name = "ground" id="nav_sub_cat_adv4" class="form-control dec-none" >Участок</button>-->
+<!--        </div>-->
+<!--        <div class="cls-hover">-->
+<!--            <button name = "commercial" id="nav_sub_cat_adv5" class="form-control dec-none" >Коммерческая</button>-->
+<!--        </div>-->
+<!--    </form>-->
+
+{% endblock %}
+
+{% block partners %}
+{% include 'inc/_partners.html' %}
+{% endblock%}
+
+{% block content %}
+
+
+ {% for i in page_obj %}
+<!-- ------------------------Поиск по купить дом -------------------->
+
+
+{% if i.property_type == 'Дом'  %}
+    <div class="card mb-3">
+        <div class="card-header"  style="background-color: #FF8E29;">
+            <div class="line-title"><span id="ob-title">{{ i.category }}. {{ i.property_type }}</span></div>
+            <div  class="line-title" id="art">
+                <span id="ob-art"> Арт: {{ i.art }}</span>
+            </div >
+            <div class="line-title"><span id="ob-prise"><b><span style ="color:white">Цена: &#160</span>  {{i.prise}} руб.</b></span></div>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if i.photo1  %}
+                <img src="{{ i.photo1.url }}" alt="" width="350" class="mr-3">
+                {% else %}
+                <img src="/static/media/zaglooshka.jpg" alt="" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <p class="card-title point"><b>{{ i.title }} </b></p><br>
+                    <p class="point"><b><i class="blue-color">Район:</i></b> {{i.district}}</p>
+                    <p class="point"><b><i class="blue-color">Город: </i></b>{{i.town}}</p>
+                    <p class="point"><b><i class="blue-color">Улица: </i></b>{{i.street}}</p>
+                    <hr>
+                    <p class="card-text">{{ i.content|linebreaks|truncatewords:37 }}</p>
+                    <b><i class="blue-color">Продавец:</i></b> {{ i.name_seller }}&emsp;&emsp;&emsp;
+                    <b><i class="blue-color">тел: </i></b>{{ i.phone_number }} <a href='/adv/adv/{{i.id}}/' class="btn btn-primary"
+                                                                                  id="read-more-adv">Читать далее...</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-muted" style="background-color: #FF8E29;">
+            Дата подачи: &emsp;&emsp;&emsp;{{ i.created_at|date:"Y-m-d H:i:s"}}<br>
+            Дата обновления: &emsp;{{ i.updated_at|date:"Y-m-d H:i:s"}}
+
+
+
+        </div>
+    </div>
+{% endif %}
+
+<!-- ------------------------Поиск по купить квартиру -------------------->
+
+
+{% if i.property_type == 'Квартира'  %}
+    <div class="card mb-3">
+        <div class="card-header"  style="background-color: #FF8E29;">
+            <div class="line-title"><span id="ob-title">{{ i.category }}. {{ i.property_type }}</span></div>
+            <div  class="line-title" id="art">
+                <span id="ob-art"> Арт: {{ i.art }}</span>
+            </div >
+            <div class="line-title"><span id="ob-prise"><b><span style ="color:white">Цена: &#160</span>  {{i.prise}} руб.</b></span></div>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if i.photo %}
+                <img src="{{ i.photo.url }}" alt="" width="350" class="mr-3">
+                {% else %}
+                <img src="/static/media/zaglooshka.jpg" alt="" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <p class="card-title point"><b>{{ i.title }}, {{i.number_rooms}} - комнатная. </b></p><br>
+                    <p class="point"><b><i class="blue-color">Район:</i></b> {{i.district}}</p>
+                    <p class="point"><b><i class="blue-color">Город: </i></b>{{i.town}}</p>
+                    <p class="point"><b><i class="blue-color">Улица: </i></b>{{i.street}}</p>
+                    <hr>
+                    <p class="card-text">{{ i.content|linebreaks|truncatewords:37 }}</p>
+                    <b><i class="blue-color">Продавец:</i></b> {{ i.name_seller }}&emsp;&emsp;&emsp;
+                    <b><i class="blue-color">тел: </i></b>{{ i.phone_number }} <a href='/adv/adv/{{i.id}}/' class="btn btn-primary" id="read-more-adv">Читать далее...</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-muted" style="background-color: #FF8E29;">
+            Дата подачи: &emsp;&emsp;&emsp;{{ i.created_at|date:"Y-m-d H:i:s"}}<br>
+            Дата обновления: &emsp;{{ i.updated_at|date:"Y-m-d H:i:s"}}
+
+
+
+        </div>
+    </div>
+{% endif %}
+
+<!-- ------------------------Поиск по купить комнату -------------------->
+
+
+{% if i.property_type == 'Комната'  %}
+    <div class="card mb-3">
+        <div class="card-header"  style="background-color: #FF8E29;">
+            <div class="line-title"><span id="ob-title">{{ i.category }}. {{ i.property_type }}</span></div>
+            <div  class="line-title" id="art">
+                <span id="ob-art"> Арт: {{ i.art }}</span>
+            </div >
+            <div class="line-title"><span id="ob-prise"><b><span style ="color:white">Цена: &#160</span>  {{i.prise}} руб.</b></span></div>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if i.photo %}
+                <img src="{{ i.photo.url }}" alt="" width="350" class="mr-3">
+                {% else %}
+                <img src="/static/media/zaglooshka.jpg" alt="" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <p class="card-title point"><b>{{ i.title }}</b></p><br>
+                    <p class="point"><b><i class="blue-color">Район:</i></b> {{i.district}}</p>
+                    <p class="point"><b><i class="blue-color">Город: </i></b>{{i.town}}</p>
+                    <p class="point"><b><i class="blue-color">Улица: </i></b>{{i.street}}</p>
+                    <hr>
+                    <p class="card-text">{{ i.content|linebreaks|truncatewords:37 }}</p>
+                    <b><i class="blue-color">Продавец:</i></b> {{ i.name_seller }}&emsp;&emsp;&emsp;
+                    <b><i class="blue-color">тел: </i></b>{{ i.phone_number }} <a href='/adv/adv/{{i.id}}/' class="btn btn-primary" id="read-more-adv">Читать далее...</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-muted" style="background-color: #FF8E29;">
+            Дата подачи: &emsp;&emsp;&emsp;{{ i.created_at|date:"Y-m-d H:i:s"}}<br>
+            Дата обновления: &emsp;{{ i.updated_at|date:"Y-m-d H:i:s"}}
+
+
+
+        </div>
+    </div>
+{% endif %}
+
+<!-- ------------------------Поиск по купить участок -------------------->
+
+
+{% if i.property_type == 'Участок'  %}
+    <div class="card mb-3">
+        <div class="card-header"  style="background-color: #FF8E29;">
+            <div class="line-title"><span id="ob-title">{{ i.category }}. {{ i.property_type }}</span></div>
+            <div  class="line-title" id="art">
+                <span id="ob-art"> Арт: {{ i.art }}</span>
+            </div >
+            <div class="line-title"><span id="ob-prise"><b><span style ="color:white">Цена: &#160</span>  {{i.prise}} руб.</b></span></div>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if i.photo %}
+                <img src="{{ i.photo.url }}" alt="" width="350" class="mr-3">
+                {% else %}
+                <img src="/static/media/zaglooshka.jpg" alt="" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <p class="card-title point"><b>{{ i.title }} </b></p><br>
+                    <p class="point"><b><i class="blue-color">Район:</i></b> {{i.district}}</p>
+                    <p class="point"><b><i class="blue-color">Город: </i></b>{{i.town}}</p>
+                    <p class="point"><b><i class="blue-color">Улица: </i></b>{{i.street}}</p>
+                    <hr>
+                    <p class="card-text">{{ i.content|linebreaks|truncatewords:37 }}</p>
+                    <b><i class="blue-color">Продавец:</i></b> {{ i.name_seller }}&emsp;&emsp;&emsp;
+                    <b><i class="blue-color">тел: </i></b>{{ i.phone_number }} <a href='/adv/adv/{{i.id}}/' class="btn btn-primary" id="read-more-adv">Читать далее...</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-muted" style="background-color: #FF8E29;">
+            Дата подачи: &emsp;&emsp;&emsp;{{ i.created_at|date:"Y-m-d H:i:s"}}<br>
+            Дата обновления: &emsp;{{ i.updated_at|date:"Y-m-d H:i:s"}}
+
+
+
+        </div>
+    </div>
+{% endif %}
+
+<!-- ------------------------Поиск по купить коммерческая -------------------->
+
+
+{% if i.property_type == 'Коммерческая'  %}
+    <div class="card mb-3">
+        <div class="card-header"  style="background-color: #FF8E29;">
+            <div class="line-title"><span id="ob-title">{{ i.category }}. {{ i.property_type }}</span></div>
+            <div  class="line-title" id="art">
+                <span id="ob-art"> Арт: {{ i.art }}</span>
+            </div >
+            <div class="line-title"><span id="ob-prise"><b><span style ="color:white">Цена: &#160</span>  {{i.prise}} руб.</b></span></div>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if i.photo %}
+                <img src="{{ i.photo.url }}" alt="" width="350" class="mr-3">
+                {% else %}
+                <img src="/static/media/zaglooshka.jpg" alt="" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <p class="card-title point"><b>{{ i.title }}</b></p><br>
+                    <p class="point"><b><i class="blue-color">Район:</i></b> {{i.district}}</p>
+                    <p class="point"><b><i class="blue-color">Город: </i></b>{{i.town}}</p>
+                    <p class="point"><b><i class="blue-color">Улица: </i></b>{{i.street}}</p>
+                    <hr>
+                    <p class="card-text">{{ i.content|linebreaks|truncatewords:37 }}</p>
+                    <b><i class="blue-color">Продавец:</i></b> {{ i.name_seller }}&emsp;&emsp;&emsp;
+                    <b><i class="blue-color">тел: </i></b>{{ i.phone_number }} <a href='/adv/adv/{{i.id}}/' class="btn btn-primary" id="read-more-adv">Читать далее...</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-muted" style="background-color: #FF8E29;">
+            Дата подачи: &emsp;&emsp;&emsp;{{ i.created_at|date:"Y-m-d H:i:s"}}<br>
+<!--            Дата обновления: &emsp;{{ i.updated_at|date:"Y-m-d H:i:s"}}-->
+
+
+
+        </div>
+    </div>
+{% endif %}
+
+
+
+
+
+{%  empty %}
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="media">
+              <h6>К сожалению не найдено новостей  по данной категории,
+                  рекоментуем зайти на вкладку <a href="{% url 'adv' %}" class="card-text"> "Все объявления".</a></h6>
+
+        </div>
+
+    </div>
+</div>
+
+    {% endfor %}
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+ {% if page_obj.has_previous %}
+    <li class="page-item">
+          <a class="page-link pag" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+    </li>
+          {% endif %}
+        {% for p in page_obj.paginator.page_range %}
+            <li class="page-item"><a class="page-link pag" href="?page={{ p }}">{{ p }}</a></li>
+        {% endfor %}
+      {% if page_obj.has_next %}
+    <li class="page-item">
+          <a class="page-link pag" href="?page={{ page_obj.next_page_number }}">Next</a>
+
+    </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock %}

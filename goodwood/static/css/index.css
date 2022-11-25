@@ -1,0 +1,467 @@
+body{
+    background-attachment: fixed;
+    background-position: center center;
+    margin: 0;
+    background-image: url("/static/main-background.gif");
+    background-repeat:  repeat-y;
+    background-size: cover;
+}
+#goodwood{
+    margin-bottom: 0;
+
+    font-size: 50px;
+    text-decoration: underline;
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+
+
+}
+#sochi{
+    margin-top: -20px;
+    margin-bottom: 0;
+
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    font-family:Comic , 'Times New Roman', Times, serif;
+}
+#logo{
+width: 12%;
+min-width: 170px;
+
+}
+#string{
+
+    color:#FFFF00;
+    font-style:oblique;
+    font-weight: bold;
+        /* text-align: left; */
+        font-size: 0.9em;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#block-reg{
+    /* background-color:brown; */
+    /* background-color: white; */
+    width: 25%;
+}
+.reg{
+    color: white;
+    font-weight:bold;
+}
+#reg > span{
+    color: white;
+}
+
+#reg{
+    padding-left: 10%;
+}
+
+
+
+
+#name{
+    width: 63%;
+}
+a.link{
+    color: white;
+    text-decoration: none;
+}
+.link:hover{
+    color: #651702;
+
+}
+
+.link:active{
+    color: white;
+
+}
+.col-lg-2 {
+    background-color: #651702;
+    padding:7px;
+    border: 1px solid white ;
+    text-align:center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-left: none;
+    border-right:none;
+    opacity: 0.7;
+}
+ #main{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+
+.col-lg-2:hover{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+
+
+}
+.container{
+    margin-top: 1%;
+}
+
+.col{
+    min-width: 200px;
+}
+
+.form-control{
+   
+    color:grey;
+    background-color:white;
+    border-radius: 0 ;
+    opacity: 0.9;
+}
+.form-control option:first-child{
+    background:white;
+    color: white;
+   
+}
+.form-control option{
+    background: #651702;
+    color: white;
+}
+input:focus{
+    outline: none;
+}
+#find{
+    background-color: #651702;
+    color: white;
+    border: 1px solid white ;
+    opacity: 0.7;
+    border-radius: 0;
+    width: 10%;
+    }
+#hidden-find{
+    display:none;
+}
+#find:hover{
+    background-color: #E35C14;
+    border: 1px solid white ;
+    color: #651702;
+    font-weight:bold;
+}
+#find:active{
+    
+        background-color: white;
+        border: 1px solid #651702 ;
+        color:#651702;
+}
+#price{
+    height:2.4em;
+}
+#new-block-reg{
+    display:none;
+}
+
+.center_side{
+    
+    width:60;
+    height:120px;
+    background-color: red;
+
+}
+
+
+/* ########################## 1020 #################################### */
+@media screen and (max-width: 1020px) {
+    #logo{
+        margin-top: 1%;
+    }
+}
+/* ########################### 768 ################################### */
+@media screen and (max-width: 768px) {
+
+ #find{
+     display: none;
+ }
+ #hidden-find{
+     display:block;
+ }
+ #hidden-find{
+    background-color: #651702;
+    color: white;
+    border: 1px solid white ;
+    opacity: 0.7;
+    border-radius: 0;
+    width: 10%;
+
+    }
+
+
+ #hidden-find:hover{
+    background-color: #E35C14;
+    border: 1px solid white ;
+    color: #651702;
+    font-weight:bold;
+}
+#hidden-find:active{
+    
+        background-color: white;
+        border: 1px solid #651702 ;
+        color:#651702;
+}
+#string{
+    display: none;
+}
+
+}
+
+@media screen and (max-width: 646px) {
+ #reg > span{
+    font-size:0.8em;
+ }
+}
+
+/* ############################ 656 ########################### */
+@media screen and (max-width: 651px) {
+    .reg-string {
+        display: none;
+    }
+    #reg > span{
+    display: none;
+ }
+
+    #new-block-reg{
+        display: block;
+        color: white;
+        font-weight:bold;
+        text-align: right;
+        padding-right: 5%;
+    }
+    
+}
+
+@media screen and (max-width: 493px) {
+ #reg > span{
+    font-size:1em;
+ }
+}
+
+@media screen and (max-width: 443px) {
+    #goodwood{
+        font-size: 2em;
+    }
+    #sochi{
+        font-size:1.5em;
+        margin-top:-8px;
+    }
+}
+
+/* -------------------новости--------------------------- */
+.mr-3{
+float:left;
+margin-right:2%;
+}
+.container  > h1{
+    color: white;
+}
+.container  > h5{
+    color: white;
+}
+.media-body > h5{
+    font-weight: bold;
+ color:#651702;
+}
+
+/* ---------------------------------------------стили для footer--------------------------- */
+footer{
+    color:white;
+    width: 100%;
+    float: left;
+    padding: 1%;
+    border-top: 1px solid white;
+    margin-top: 10px;
+    border-bottom: 1px solid white;;
+}
+
+footer #social{
+    float: left;
+    width: 50%;
+}
+footer #rights{
+    float: right;
+    width: 50%;
+    text-align:right;
+    font-size: 1.1em;
+}
+footer #social img{
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin-left: 15px;
+}
+#connect{
+    margin-left: 15px;
+
+}
+footer #social a{
+    text-decoration: none;
+    color: white;
+
+}
+/*--------------------------------объявления-------------------------------------*/
+#ob-title{
+    font-weight: bold;
+}
+#ob-prise{
+    float: right;
+}
+#ob-art{
+ float:center;
+ color:white;
+}
+.card-header{
+    display:flex;
+}
+.line-title{
+    width:33%;
+}
+.point{
+    line-height:0.9em;
+}
+.blue-color{
+    color: #002B85;
+}
+#read-more-adv{
+    float:right;
+}
+/*------------------------навигация по объявлениям(подкатегории)-------------------------*/
+#nav_sub_cat_adv1,#nav_sub_cat_adv2,#nav_sub_cat_adv3,#nav_sub_cat_adv4,#nav_sub_cat_adv5{
+    background-color: #651702;
+    color: white;
+    border: 1px solid white ;
+    opacity: 0.7;
+    border-radius: 0;
+    width: 100%;
+
+    }
+.dec-none{
+    text-decoration:none;
+
+}
+ .cls-hover:hover #nav_sub_cat_adv1,.cls-hover:hover #nav_sub_cat_adv2,.cls-hover:hover #nav_sub_cat_adv3,.cls-hover:hover #nav_sub_cat_adv4,.cls-hover:hover #nav_sub_cat_adv5
+
+  {
+    background-color: #E35C14;
+    border: 1px solid white ;
+    color: #651702;
+    font-weight:bold;
+}
+.cls-hover:active #nav_sub_cat_adv1,.cls-hover:active  #nav_sub_cat_adv2,.cls-hover:active  #nav_sub_cat_adv3,.cls-hover:active  #nav_sub_cat_adv4,.cls-hover:active  #nav_sub_cat_adv5
+{
+        background-color: white;
+        border: 1px solid #651702 ;
+        color:#651702;
+}
+/*---------------------------форма создания и отправки объявления ----------------------------------*/
+.helptext{
+    color: #d7d7f2;
+}
+/*------------------------------радиоточки в форме отправки объявления-----------------------------*/
+ul li {
+    list-style-type: none;
+}
+#id_property_type{
+    display: flex;
+    justify-content: space-between;
+    }
+
+#main_content{
+    min-height: calc(65vh - 80px);
+}
+
+/*------------------------ наложение кнопки листать фото в объявлениях-----------------*/
+#img_adv1,#img_adv2,#img_adv3,#img_adv4,#img_adv5{
+    position:relative;
+    position:relative;
+     z-index:1;
+}
+#btn_next_photo{
+    position:absolute;
+     z-index:999;
+     left:330px;
+}/*--------------------background окна шанс----------------------------------------*/
+#background-holiday{
+    background-image: url("/static/media/holiday.gif");
+
+   }
+/*--------------------------партнерская программа-------------------*/
+#affiliate_program{
+    font-size: 140%;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+
+}
+/*#block_affiliate_program{
+    border: 2px solid white;
+    border-radius: 5px;
+}*/
+.design_partner{
+    font-size: 100%;
+    font-weight: bold;
+    list-style: disc;
+    display: list-item;
+    color: white;
+    text-decoration: none;
+}
+/*-------------------- index контент -----------------------------------------*/
+#content-border{
+    border: 2px solid #E35C14;
+}
+/*------------------------кнопка удаления аккаунта -------------------------*/
+button[name ='account_for_del']{
+    background-color: red;
+    border: 1px solid red;
+    float: left;
+}
+/*---------------------чекбокс на 'забыть пароль'--------------------------------*/
+
+
+input[type=checkbox] { display: none; }
+
+.pseudocheckbox::before {
+    content: "\00A0";
+    display: inline-block;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 2px solid #0D6EFD;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: baseline;
+
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: bold;
+    color: #0D6EFD;
+}
+
+input[type=checkbox]:checked + .pseudocheckbox::before { content: "\2713"; }
+
+/*--------------линия: дата, шанс, количество аккаунтов-----------------------*/
+.top_line{
+   font-size: 20px;
+   color: white;
+}
+/*-----------------------------------------------------*/
+.adv_box_line{
+    display: flex;
+      justify-content: space-around;
+  }
+

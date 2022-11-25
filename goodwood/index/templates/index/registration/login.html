@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{%  block title %}
+GoodWood.Авторизация
+{% endblock %}
+
+{% block slyle-nav %}
+
+<style>
+        #main{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+
+</style>
+{% endblock %}
+{%  block content %}
+
+
+    <div class="card mb-3" style="width: 57%">
+        <form method="post">
+        <div class="card-header" style="background-color: #FF8E29;">
+            <h3>Авторизация</h3>
+        </div>
+        <div class="card-body">
+            <div style="color:red;">{{ error }}</div>
+
+            <div class="media">
+
+                <div class="media-body">
+
+                    {% csrf_token %}
+                    Введите логин: <br>
+                    <input type="text" name="username" placeholder="Логин" class="form-control"><br>
+
+                    Введите пароль:<br>
+                    <input type="password" name="password" placeholder="Пароль" class="form-control">
+                    <br>
+                    <div >
+                        <input type="submit" value="Войти" class="btn btn-primary" style="width:100%">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </form>
+        <form method="post" action="{% url 'get_new_password' %}">
+            {% csrf_token %}
+            <div class="card-body">
+                <div class="media">
+                    <div class="media-body">
+
+                        <label>
+                            <input type="checkbox" id="check_recover" onclick='recover_password()'>
+                            <span class="pseudocheckbox">Восстановить пароль</span>
+                        </label><br>
+                        <hr>
+                        <label hidden id="phone_for_recover1">
+
+                            Введите логин указанный при регистрации:<br>
+                            <input type="text" value="" name="user_login" placeholder="Логин" class="form-control">
+
+                            <br>
+
+
+                            Введите почту указанную при регистрации:<br>
+                            <input type="text" value="" name="user_email" placeholder="Почта" class="form-control">
+                        </label>
+                    </div>
+                        <p style = "text-align: center; color: red; font-size: 2em">{{ mes }}</p>
+
+                </div>
+            </div>
+            <div class="card-footer text-muted" style="background-color: #FF8E29;height:55px;">
+                <label hidden id="phone_for_recover2">
+                    <button type="submit"  name='button_new_password' class="btn btn-primary">Получить новый пароль</button>
+                </label>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,146 @@
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(101,23,2,0.6);
+    z-index: 99999;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    display: none;
+    pointer-events: none;
+    border-color: #651702;
+}
+
+.modalDialog:target {
+display: block;
+pointer-events: auto;
+}
+    
+.modalDialog > div {
+    max-width: 400px;
+width: auto;
+position: relative;
+margin: 3% auto;
+padding: 5px 20px 13px 20px;
+border-radius: 10px;
+background: #fff;
+background: -moz-linear-gradient(#fff, #E35C14);
+background: -webkit-linear-gradient(#fff, #E35C14);
+background: -o-linear-gradient(#fff, #E35C14);
+}
+
+.close {
+    background: #651702;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;   
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+background: #00d9ff;
+}
+.container-modal > div{
+    display:flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+#button-reg{
+    background-color:#E35C14 ;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 1px solid #651702;
+width: 40%;
+padding-top: 3%;
+min-width: 127px;
+height: 50px;
+/* box-shadow: inset 3px 3px 5px #651702,inset -3px -3px 5px #651702; */
+cursor:pointer;
+
+}
+#button-enter{
+    background-color:#E35C14 ;
+    /* opacity: 0.3; */
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 1px solid #651702;
+width: 40%;
+padding-top: 3%;
+min-width: 127px;
+height: 50px;
+cursor:pointer;
+
+}
+.modal-string{
+    text-align: center;
+    color:white;
+}
+label{
+    width: 60px;
+}
+#btn-reg,#btn-enter{
+    width: 100%;
+    background-color:#E35C14;
+    color:white;
+    border:1px solid #651702;
+    cursor:pointer;
+
+}
+
+#btn-foget{
+    background-color:#E35C14;
+    color:white;
+    border:1px solid #651702;
+    width:49%
+}
+#email-foget{
+    width:49%;
+}
+#btn-foget:active{
+    box-shadow: inset 3px 3px 5px #651702,inset -3px -3px 5px #651702;
+
+}
+#btn-enter:active{
+    box-shadow: inset 3px 3px 5px #651702,inset -3px -3px 5px #651702;
+
+}
+#email-foget-block > p{
+    text-align: center;
+}
+@media screen and (max-width: 386px) {
+    #modal-line1,#modal-line2,#modal-line3{
+        display: flex;
+      flex-direction: column;
+    }
+}
+@media screen and (max-width: 304px) {
+   
+    .modal-string{
+        font-size:0.8em;
+    }
+    #button-enter,#button-reg{
+        min-width:92px;
+    }
+    #button-reg,#button-enter{
+        height: 30px;
+        padding-top: 1.5%;
+    }
+}

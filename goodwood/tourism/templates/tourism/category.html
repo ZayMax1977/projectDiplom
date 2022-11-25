@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{%  block title %}
+{{ category.title}}
+{% endblock %}
+
+{% block slyle-nav %}
+
+    <style>
+
+       .pag{
+    background-color:#651702;
+    border-color:#651702;
+    color: white;
+    opacity: 0.7;
+ }
+ .pag:hover{
+     background-color: #E35C14;
+ }
+        #tourism{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+ #main {
+    background-color: #651702;
+    padding:7px;
+    border: 1px solid white ;
+    text-align:center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-left: none;
+    border-right:none;
+    opacity: 0.7;
+}
+#main:hover{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+
+
+}
+    </style>
+    {% endblock %}
+
+{% block nav_category %}
+{% include 'inc/_tourism_nav_category.html' %}
+{% endblock %}
+
+{% block partners %}
+{% include 'inc/_partners.html' %}
+{% endblock%}
+
+{% block content %}
+    {% for i in page_obj %}
+    <div class="card mb-3">
+        <div class="card-header" style="background-color: #FF8E29;">
+            Категория: {{ i.category }}
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if i.photo %}
+                <img src="{{ i.photo.url }}" alt="" width = "350" class="mr-3">
+                {% else %}
+                <img src = "/static/media/zaglooshka.jpg" alt="" class="mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <p class="card-text">{{ i.content|linebreaks|truncatewords:30 }}</p>
+                    <a href="/tourism/tourism/{{i.id}}/" class="btn btn-primary">Читать далее...</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer text-muted" style="background-color: #FF8E29">
+        {{ i.created_at|date:"Y-m-d H:i:s"}}&emsp;
+        Источник: <a href="{{i.source }}" ><b><i>{{i.source }}</i> </b></a>&emsp;
+
+       </div>
+    </div>
+
+{% empty %}
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="media">
+              <h6>К сожалению не найдено статей  по данной категории,
+                  рекоментуем зайти на вкладку <a href="{% url 'tourism' %}" class="card-text"> "Все статьи".</a></h6>
+
+        </div>
+
+    </div>
+</div>
+
+    {% endfor %}
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+ {% if page_obj.has_previous %}
+    <li class="page-item">
+          <a class="page-link pag" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+
+    </li>
+          {% endif %}
+        {% for p in page_obj.paginator.page_range %}
+            <li class="page-item"><a class="page-link pag" href="?page={{ p }}">{{ p }}</a></li>
+        {% endfor %}
+      {% if page_obj.has_next %}
+    <li class="page-item">
+          <a class="page-link pag" href="?page={{ page_obj.next_page_number }}">Next</a>
+
+    </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+

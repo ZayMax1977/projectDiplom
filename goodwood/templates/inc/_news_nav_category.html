@@ -1,0 +1,25 @@
+{% if perms.law or perms.news or perms.tourism %}
+<div class="list-group">
+    <a href="{% url 'add_news' %}" class="list-group-item list-group-item-action"
+       style="background-color: #FF8E29; border-bottom-color:white"
+    >Добавить новость</a>
+</div>
+{% endif %}
+
+<div class="list-group">
+    <a href="{% url 'news' %}" class="list-group-item list-group-item-action "
+       style="background-color: #FF8E29;">Все
+        новости</a>
+
+</div>
+
+<div class="list-group">
+    {% for i in categories %}
+
+            <a href="/news/category/{{ i.id}}" class="list-group-item list-group-item-action ">{{ i.title }}
+
+            </a>
+<span class="badge badge-primary badge-pill">{{ categories.num_categories }}</span>
+    {% endfor %}
+</div>
+<br>

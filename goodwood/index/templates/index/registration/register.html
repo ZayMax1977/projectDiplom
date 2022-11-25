@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{%  block title %}
+GoodWood.Регистрация
+{% endblock %}
+
+ {% block slyle-nav %}
+
+    <style>
+        #main{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+ label{
+width: 260px;
+
+}
+    </style>
+    {% endblock %}
+
+
+{%  block content %}
+<!--------отключение кнопки 'назад' в браузере на этой странице, так как без этого был баг,
+ ---------который я не понимал как исправить: если срабатывала валидация при регистрации то форма обнуляется и что бы не заполнять форму
+ заново хочется перейти стрелкой браузера назад... но.. checkbox оказывается включен а кнопки 'регистрация' нет,хотя должна быть при
+ включенном checkbox, поэтому на этой странице
+  отменил переход назад ------>
+
+<script type = "text/javascript" >
+      function preventBack(){window.history.forward();}
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null};
+</script>
+<!-------------------------------------------------------------------------------------------->
+<form  method="post">
+<div class="card mb-3" style="width: 57%">
+    <div class="card-header" style="background-color: #FF8E29;">
+<h3>Регистрация</h3>
+    </div>
+    <div class="card-body">
+<!--        <div style="color:red;">{{ error }}</div>-->
+        <div class="media">
+            <div class="media-body">
+                    {% csrf_token %}
+                Имя пользователя (логин): <br>
+                <input type="text" id="user_name" name="username" class="form-control" placeholder="Имя" value=""><br>
+<!--                Ваш телефон: <br>-->
+<!--                <input type="text" id="user_phone" name="phone" class="form-control" placeholder="Телефон" value=""><br>-->
+                Email:<br>
+                <input type="email" name="email" placeholder="Email" class="form-control" value=""><br>
+                Пароль:<br>
+                <input type="password" name="password" placeholder="Пароль" class="form-control" value=""><br>
+                Пароль еще раз:<br>
+                 <input type="password" name="password2" placeholder="Пароль" class="form-control" value=""><br>
+
+
+
+                <label >
+                    <input type="checkbox"  onclick ="reg_button_hidden()">
+                    <span class="pseudocheckbox" id = "reg_check" >Oзнакомлен и согласен с <a href="#staticBackdrop" data-bs-toggle="modal" style=" text-decoration: none; " >Правилами</a>сайта
+    </span>
+                </label>
+
+
+
+
+            </div>
+            </div>
+
+    </div>
+    <p style = "text-align: center; color: red; font-size: 2em">{{ mes1 }}</p>
+    <p style = "text-align: center; color: red; font-size: 2em">{{ mes2 }}</p>
+
+    <div class="card-footer text-muted" style="background-color: #FF8E29; height: 55px;">
+            <input type="submit" id="button_reg" hidden value="Регистрация" class ="btn btn-primary">
+
+    </div>
+</div>
+</form>
+
+
+<!---------------------------- модальное окно соглашения(правил)--------------------------------->
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #FF8E29;height:55px">
+        <h5 class="modal-title" id="staticBackdropLabel" >Соглашение с ресурсом GoodWood.com</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque cupiditate dicta dignissimos eligendi eos error eum fugit harum iusto laudantium maiores minima nam neque nesciunt, officiis quam quas qui quibusdam quo sequi sint soluta tempore tenetur totam unde ut velit vero voluptatem voluptates? Dolores eligendi facere libero odio, omnis quae sunt vitae? A doloremque eaque earum, et expedita explicabo illum laborum, nihil non omnis porro ratione sequi! Accusantium aliquam amet architecto aut consectetur cupiditate deserunt doloremque doloribus eligendi eos eum exercitationem explicabo, facilis illum, iusto laudantium magni necessitatibus odit pariatur perferendis reiciendis repellat sequi soluta, tempore temporibus ullam unde.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, accusantium, at consequatur culpa deserunt dignissimos distinctio dolore dolorem eaque error esse eveniet ex exercitationem facilis fuga fugiat fugit inventore iusto libero magnam molestiae nemo nobis numquam porro provident, reprehenderit soluta sunt ullam ut vel velit veniam voluptatem voluptates. Ad aspernatur, dolor eos expedita ipsa iure perferendis, quam quia quos temporibus ut voluptatibus. A culpa, cumque delectus dolores doloribus ea error molestiae mollitia nobis, quam quis similique? Accusantium aperiam blanditiis delectus dicta doloremque dolorum enim, eum explicabo facilis fuga harum iste libero magnam maiores minima neque placeat qui quod repellendus repudiandae, saepe tempora veritatis voluptas. Autem corporis debitis dolor doloribus molestias nesciunt quis temporibus, voluptatem. Alias aliquam at incidunt possimus voluptas. Animi eligendi, eum. Ad adipisci amet architecto at consectetur culpa, delectus distinctio eos fugit iusto laboriosam, maiores mollitia nam nihil qui quia quod ratione veniam vitae voluptate! Animi assumenda at consectetur culpa distinctio, eaque earum explicabo id in iste nesciunt nihil nisi quasi quia veniam vitae voluptate voluptatibus? Adipisci esse excepturi hic maxime nihil odit, omnis, pariatur, quas reiciendis rerum saepe similique. Aut commodi consequuntur deleniti dicta dignissimos doloremque dolorum eius excepturi expedita fugit incidunt laudantium magni molestias mollitia natus, nisi officiis, optio quas quasi quibusdam quo reiciendis repellendus rerum sequi sit tempora unde ut! Alias cum deserunt eligendi est et ex recusandae tempora tempore veniam voluptatum. Animi dicta doloremque explicabo fugiat fugit id soluta veniam. Culpa cupiditate ipsa libero nostrum tempora veniam? Amet architecto atque, beatae ducimus est, illum labore mollitia, necessitatibus non nostrum quibusdam repudiandae temporibus totam voluptates voluptatum. Accusantium adipisci aliquam, aliquid atque beatae dolor, doloribus ea earum et hic illum minus mollitia nesciunt odit officiis porro possimus quaerat quia quibusdam repellat rerum sint, tempora vero! Ab adipisci dignissimos eius excepturi iste maiores officiis quod rem repellat.</p>
+      </div>
+      <div class="modal-footer" style="background-color: #FF8E29; height:55px">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

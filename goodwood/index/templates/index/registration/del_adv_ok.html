@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{%  block title %}
+Связаться с нами
+{% endblock %}
+
+{% block nav_category %}
+{% endblock%}
+
+{% block slyle-nav %}
+   <style>
+
+ #main {
+    background-color: #651702;
+    padding:7px;
+    border: 1px solid white ;
+    text-align:center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-left: none;
+    border-right:none;
+    opacity: 0.7;
+}
+
+#main:hover{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+}
+label{
+width: 250px;
+
+}
+ </style>
+    {% endblock %}
+
+{%  block content %}
+
+<div  class="card mb-3">
+<!--    <div class="card-header" style="background-color: #FF8E29;">-->
+<!--    </div>-->
+    <div class="card-body">
+
+        <div class="media">
+
+            <div class="media-body">
+<h4 style = "text-align: center"> Объявление удалено </h4>
+
+            </div>
+        </div>
+
+    </div>
+<!--    <div class="card-footer text-muted" style="background-color: #FF8E29;">-->
+<!--    </div>-->
+
+</div>
+<br>
+
+{% endblock%}

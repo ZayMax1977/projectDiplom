@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+
+{%  block title %}
+Добавление объявления
+{% endblock %}
+
+{% block nav_category %}
+{% include 'inc/_adv_nav_category.html' %}
+{% endblock%}
+
+{% block slyle-nav %}
+   <style>
+        #submit-an-ad{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+
+ }
+ #main {
+    background-color: #651702;
+    padding:7px;
+    border: 1px solid white ;
+    text-align:center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border-left: none;
+    border-right:none;
+    opacity: 0.7;
+}
+#main:hover{
+    background-color: #E35C14;
+    border-bottom: -1px solid white ;
+    border-top: -1px solid white ;
+    border-left: 1px solid white ;
+    border-right: 1px solid white ;
+}
+label{
+width: 170px;
+
+}
+
+    </style>
+    {% endblock %}
+
+
+
+
+
+{%  block content %}
+<form action ="{% url 'create_adv' %}" method="post" enctype=multipart/form-data>
+
+<div class="card mb-3">
+    <div class="card-header" style="background-color: #FF8E29;">
+<h3>Добавление объявления</h3>
+    </div>
+    <div class="card-body">
+
+        <div class="media">
+
+            <div class="media-body">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    {{ form.non_field.errors }}
+    <p style = "text-align: center; color: red; font-size: 2em">{{ too_big }}</p>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="card-footer text-muted" style="background-color: #FF8E29;">
+        <button type="submit" class ="btn btn-primary  ">Добавить объявление</button>
+    </div>
+
+</div>
+</form>
+
+
+
+
+
+<br>
+
+{% endblock%}
